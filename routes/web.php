@@ -39,4 +39,6 @@ Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
+
 
