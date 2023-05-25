@@ -45,17 +45,30 @@ class ProveedorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $response = Http::withOptions(['verify' => false])->get("https://quirky-mahavira.217-76-154-49.plesk.page/api/proveedores/{$id}");
+            $proveedor = $response->json();
+        
+            return view('proveedores.edit', compact('proveedor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+
+       
+        $response = Http::withOptions(['verify' => false])->put("https://quirky-mahavira.217-76-154-49.plesk.page/api/proveedores/{$id}", [
+           
+            'nombre' => $request->input('nombre'),
+            'direccion' => $request->input('direccion'),
+            'telefono' => $request->input('telefono')
+        ]);
+
+        if ($response->successful()) {
+            return redirect()->route('proveedores.index')->with('success', 'Proveedor actualizado exitosamente');
+        } else {
+            return back()->with('error', 'Error al actualizar el proveedor. Inténtalo de nuevo más tarde.');
+        }
     }
 
     /**

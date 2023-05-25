@@ -43,3 +43,6 @@ Route::get('/product/create', [ProductController::class, 'create'])->name('produ
 Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
 
 
+Route::get('/proveedores/{id}/editar', 'ProveedorController@edit')->name('proveedores.edit');
+
+Route::put('/proveedores/{id}', 'ProveedorController@update')->name('proveedores.update');
