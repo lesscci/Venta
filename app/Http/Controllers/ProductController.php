@@ -16,6 +16,7 @@ class ProductController extends Controller
         ('https://quirky-mahavira.217-76-154-49.plesk.page/api/productos');
         $data = $response->json();
         return view('product.index', compact('data'));
+  /*actualizate ya*/
     }
 
     /**
