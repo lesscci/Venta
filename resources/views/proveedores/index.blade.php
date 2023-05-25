@@ -41,7 +41,7 @@
                     </tr>
                     @endforeach
                     @else
-                    <tr>
+                    <tr> 
                         <td colspan="5">No hay proveedores disponibles</td>
                     </tr>
                     @endif

@@ -75,7 +75,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        $response = Http::withOptions(['verify' => false])->delete("https://quirky-mahavira.217-76-154-49.plesk.page/api/products/{$id}");
+        $response = Http::withOptions(['verify' => false])->delete("https://quirky-mahavira.217-76-154-49.plesk.page/api/productos/{$id}");
 
             if ($response->successful()) {
                 $previousUrl = url()->previous();
