@@ -13,12 +13,12 @@ class CartController extends Controller
         $cartItems = session('cart', []);
         $products = [];
 
-        foreach ($cartItems as $productId => $quantity) {
+      /*  foreach ($cartItems as $productId => $quantity) {
             $response = Http::withOptions(['verify' => false])->get('https://quirky-mahavira.217-76-154-49.plesk.page/api/productos/' . $productId);
 
             if ($response->successful()) {
                 $product = $response->json();
-                dd($product);
+                
                 $products[] = [
                     'name' => $product['nombre'],
                     'description' => $product['descripcion'],
@@ -26,7 +26,7 @@ class CartController extends Controller
                     'quantity' => $quantity,
                 ];
             }
-        }
+        }*/
         return view('cart.index', compact('cartItems'));
 
     }

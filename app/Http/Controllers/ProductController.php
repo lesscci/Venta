@@ -13,8 +13,8 @@ class ProductController extends Controller
     public function index()
     {
         $response = Http::withOptions(['verify' => false])->get
-        ('https://quirky-mahavira.217-76-154-49.plesk.page/api/products');
-        $data = $response->json()['data'];
+        ('https://quirky-mahavira.217-76-154-49.plesk.page/api/productos');
+        $data = $response->json();
         return view('product.index', compact('data'));
     }
 
@@ -74,6 +74,13 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+    $response = Http::withOptions(['verify' => false])->delete("https://quirky-mahavira.217-76-154-49.plesk.page/api/products/{$id}");
+
+    if ($response->successful()) {
+        $previousUrl = url()->previous();
+        return redirect($previousUrl)->with('success', 'Producto eliminado correctamente');
+    } else {
+        return back()->with('error', 'Error al eliminar el producto. Inténtalo de nuevo más tarde.');
     }
+}
 }
