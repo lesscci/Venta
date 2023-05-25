@@ -4,6 +4,7 @@
     </x-slot>
 
     <div class="py-6 px-4 sm:px-6 lg:px-8">
+    <a href="proveedores/create" class="btn btn-primary">CREAR</a>
         <div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg">
             @if(session()->has('success'))
             <div class="alert alert-success">

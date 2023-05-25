@@ -32,19 +32,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        {
-    $response = Http::withOptions(['verify' => false])->post('https://quirky-mahavira.217-76-154-49.plesk.page/api/products', [
-        'name' => $request->input('name'),
-        'description' => $request->input('description'),
-        'stock' => $request->input('stock'),
-    ]);
-
-    if ($response->successful()) {
-        return redirect()->route('products.index')->with('success', 'Producto creado exitosamente.');
-    } else {
-        return back()->withInput()->with('error', 'Error al crear el producto. Inténtalo de nuevo más tarde.');
+        $response = Http::withOptions(['verify' => false])->post('https://quirky-mahavira.217-76-154-49.plesk.page/api/productos', [
+            'nombre' => $request->input('name'),
+            'descripcion' => $request->input('description'),
+            'precio' => $request->input('precio'),
+            'proveedor_id' => $request->input('proveedor_id'),
+        ]);
+    
+        if ($response->successful()) {
+            return redirect()->route('products.index')->with('success', 'Producto creado exitosamente.');
+        } else {
+            return back()->withInput()->with('error', 'Error al crear el producto. Inténtalo de nuevo más tarde.');
+        }
     }
-}}
+    
 
     /**
      * Display the specified resource.

@@ -18,8 +18,13 @@
             </div>
 
             <div class="mb-4">
-                <label for="stock" class="block text-sm font-medium text-gray-700">Stock</label>
-                <input type="number" id="stock" name="stock" tabindex="3" class="form-input">
+                <label for="stock" class="block text-sm font-medium text-gray-700">Precio</label>
+                <input type="number" id="precio" name="precio" tabindex="3" class="form-input">
+            </div>
+
+            <div class="mb-4">
+                <label for="stock" class="block text-sm font-medium text-gray-700">ID Proveedor</label>
+                <input type="number" id="proveedor_id" name="proveedor_id" tabindex="4" class="form-input">
             </div>
 
             <div class="flex justify-between">

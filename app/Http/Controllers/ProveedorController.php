@@ -67,7 +67,7 @@ class ProveedorController extends Controller
 
             if ($response->successful()) {
                 $previousUrl = url()->previous();
-                return redirect($previousUrl)->with('success', 'Producto eliminado correctamente');
+                return redirect($previousUrl)->with('success', 'Proveedor eliminado correctamente');
             } else {
                 return back()->with('error', 'Error al eliminar el producto. Inténtalo de nuevo más tarde.');
             }
