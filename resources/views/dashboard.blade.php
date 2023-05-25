@@ -19,7 +19,7 @@
 
                     <h2 class="text-xl font-bold">{{ $item['nombre'] }}</h2>
                     <p class="text-gray-500">{{ $item['descripcion'] }}</p>
-                    <p class="text-gray-700 font-bold mt-2">Stock: {{ $item['precio'] }}</p>
+                    <p class="text-gray-700 font-bold mt-2">Precio: {{ $item['precio'] }}</p>
                     <div class="mt-4 flex justify-between items-center">
                        
                         <form action="{{ route('cart.add') }}" method="POST">
