@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProveedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +42,21 @@ Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
+Route::resource('proveedores', 'ProveedorController');
 
 
 Route::get('/proveedores/{id}/editar', 'ProveedorController@edit')->name('proveedores.edit');
 
 Route::put('/proveedores/{id}', 'ProveedorController@update')->name('proveedores.update');
+
+
+Route::middleware('auth')->group(function () {
+Route::post('/purchases', [PurchaseController::class, 'store'])->name('purchase.store');
+Route::get('/purchases', [PurchaseController::class, 'index'])->name('purchases.index');
+Route::get('/purchases/{id}', [PurchaseController::class, 'show'])->name('purchases.show');
+Route::get('/purchases', [PurchaseController::class, 'index'])->name('purchase.index');
+Route::post('/purchase', 'PurchaseController@store')->name('purchase.store');
+
+});
+
+

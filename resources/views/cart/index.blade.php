@@ -14,7 +14,8 @@
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Producto</th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cantidad</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                      
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>  
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -33,7 +34,26 @@
                     @endforeach
                 </tbody>
             </table>
+
         </div>
+            <table class="min-w-full divide-y divide-gray-200 ">
+                <thead class="bg-gray-50 dark:bg-gray-700" >
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                </thead>
+
+               
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <td class="px-6 py-4 whitespace-nowrap"></td>
+                </tbody>
+
+            </table>
+        
             @endif
+            <form action="{{ route('purchase.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $productId }}">
+                <input type="hidden" name="quantity" value="{{ $quantity }}">
+                <button type="submit" class="btn btn-primary">Comprar</button>
+            </form>
         </div>
 </x-app-layout>
